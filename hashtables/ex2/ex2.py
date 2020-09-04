@@ -9,6 +9,20 @@ def reconstruct_trip(tickets, length):
     """
     YOUR CODE HERE
     """
-    # Your code here
+
+    ticket_dict = {}
+
+    for ticket in tickets:
+        if ticket.source not in ticket_dict:
+            ticket_dict[ticket.source] = ticket.destination
+    
+    route = [ticket_dict['NONE']]
+
+    for i in range(len(tickets) - 1):
+        #location = destination of ticket in route list
+        location = route[i]
+        next_trip = ticket_dict[location]
+
+        route.append(next_trip)
 
     return route
